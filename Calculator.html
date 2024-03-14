@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: hsl(0, 0%, 95%);
+        }
 
-            body{
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                background-color: hsl(0, 0%, 95%);
-            }
+        .calculator_box {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: hsl(0, 0%, 15%);
+            border-radius: 15px;
+            max-width: 400px;
+            overflow: hidden;
 
-            .calculator_box{
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: hsl(0, 0%, 15%);
-                border-radius: 15px;
-                max-width: 400px;
-                overflow: hidden;
+        }
 
-            }
+        #displaySignPlusNumber {
+            width: 100%;
+            padding: 20px;
+            font: 5rem;
+            text-align: left;
+            border: none;
+            background-color: hsl(0, 0%, 20%);
+            color: white;
+            border-bottom: 2px solid red;
+        }
 
-            #display{
-                width: 100%;
-                padding: 20px;
-                font: 5rem;
-                text-align: left;
-                border: none;
-                background-color: hsl(0, 0%, 20%);
-                color: white;
-            }
+        #display {
+            width: 100%;
+            padding: 20px;
+            font: 5rem;
+            text-align: left;
+            border: none;
+            background-color: hsl(0, 0%, 20%);
+            color: white;
+            border-bottom: 2px solid red;
+            
+        }
 
-         button{
+        button {
             width: 50px;
             height: 50px;
             border-radius: 10px;
@@ -44,45 +57,46 @@
             font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
-         }
+        }
 
-         .keys{
+        .keys {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 5px;
             padding: 25px;
 
-         }
+        }
 
-         button:hover{
+        button:hover {
             background-color: hsl(0, 0%, 40%);
             transform: scale(1.1);
-         }
+        }
 
-         button:active{
+        button:active {
             background-color: hsl(0, 0%, 50%);
-         }
+        }
 
-         .plusBtn{
+        .plusBtn {
             background-color: hsl(200, 100%, 55%);
 
-         }
-         .plusBtn:hover{
+        }
+
+        .plusBtn:hover {
             background-color: hsl(35, 100%, 65%);
 
-         }
-         .plusBtn:active{
+        }
+
+        .plusBtn:active {
             background-color: hsl(35, 100%, 75%);
 
-         }
-
-
-
+        }
     </style>
 </head>
+
 <body>
-   
+
     <div class="calculator_box">
+        <input readonly id="displaySignPlusNumber">
         <input readonly id="display">
         <div class="keys">
             <button onclick="appendToDisplay('+')" class="plusBtn">+</button>
@@ -104,39 +118,33 @@
             <button onclick="clearDisplay()" class="plusBtn">C</button>
 
         </div>
-
-
-
-
-
-
-
     </div>
 
-
-
 </body>
+
 </html>
 
 <script>
 
-const display = document.getElementById("display");
+    const display = document.getElementById("display");
+    let displaySignPlusNumber = document.getElementById("displaySignPlusNumber");
+ 
 
-function appendToDisplay(input){
-    display.value += input;
-}
+    function appendToDisplay(input) {
+        display.value += input;
+    }
 
-function clearDisplay(){
-    display.value = "";
-}
+    function clearDisplay() {
+        display.value = "";
+    }
 
 
-function calculate(){
+    function calculate() {
 
-        display.value = eval(display.value)
-   
+       let answer =  display.value = eval(display.value);
+      document.getElementById('displaySignPlusNumber').value = display.value;
 
-}
+    }
 
 
 </script>
